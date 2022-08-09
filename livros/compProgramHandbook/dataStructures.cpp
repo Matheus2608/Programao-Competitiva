@@ -112,5 +112,67 @@ int main(){ sws;
     auto it = s.begin();
     cout << *it << "\n";
 
+    // The following code prints the largest element in the set:
+    auto it = s.end(); it--;
+    cout << *it << "\n";
+
+    // The function find( x) returns an iterator that points to an element whose
+    // value is x. However, if the set does not contain x, the iterator will be end.
+
+    // For example, the following code finds the element nearest to x:
+    auto it = s.lower_bound(x);
+    if (it == s.begin()) {
+    cout << *it << "\n";
+    } else if (it == s.end()) {
+    it--;
+    cout << *it << "\n";
+    } else {
+    int a = *it; it--;
+    int b = *it;
+    if (x-b < a-x) cout << b << "\n";
+    else cout << a << "\n";
+    }
+
+
+    // Other data structures
+
+    // Bitset -> The benefit of using bitsets is that they require less memory than ordinary
+    // arrays, because each element in a bitset only uses one bit of memory.
+    // The function count returns the number of ones in the bitset
+
+
+    // Deque
+    deque<int> d;
+    d.push_back(5); // [5]
+    d.push_back(2); // [5,2]
+    d.push_front(3); // [3,5,2]
+    d.pop_back(); // [3,5]
+    d.pop_front(); // [5]
+
+    // Stack, queue, priority queue
+
+    // Policy-based data structures
+    /*
+    The g++ compiler also supports some data structures that are not part of the C++
+    standard library. Such structures are called policy-based data structures.
+    */
+    #include <ext/pb_ds/assoc_container.hpp>
+    using namespace __gnu_pbds;
+
+    // indexed_set that is like set but can be indexed like an array
+
+    typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
+   /*
+    The speciality of this set is that we have access to the indices that the elements
+    would have in a sorted array. The function find_by_order returns an iterator to
+    the element at a given position:
+   */
+
+    auto x = s.find_by_order(2);
+    cout << *x << "\n"; // 7
+
+    // And the function order_of_key returns the position of a given element:
+    cout << s.order_of_key(7) << "\n"; // 2
+
     return 0;
 }
