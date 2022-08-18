@@ -8,6 +8,8 @@ using namespace std;
 #define mp make_pair
 #define pii pair<int,int>
 #define endln "\n"
+#define umap unordered_map
+#define uset unordered_set
  
 typedef pair<ll, ll> pll;
 typedef pair<string, string> pss;
